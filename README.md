@@ -1,26 +1,5 @@
 # COOKBOOK LIVECODE
-#### Goal:
-- Update
-- CSV
-- Scraping
 
-#### Livecode Starter:
-```bash
-git clone -b livecode-starter git@github.com:OGsoundFX/MVC_cookbook.git
-```
-
-## UPDATE
-- Update the route in the router (`when 3 then @controller.update`)
-- Update the **update** method in the controller
-  ```ruby
-    def update
-      display_recipes
-      recipe_id = @view.ask_for_recipe - 1
-      recipe = @repo.find(recipe_id)
-      recipe.name = @view.ask_for("name")
-      recipe.description = @view.ask_for("description")
-    end
-  ```
 ## LOAD CSV
 - Create a CSV file **recipes.csv** and add the titles and a couple of rows
   ```csv
@@ -30,9 +9,9 @@ git clone -b livecode-starter git@github.com:OGsoundFX/MVC_cookbook.git
   ```
 - Call the **load_csv** method in the Initialize of the Repo, and remind that we need to **require 'csv'** at the top, and load the path
   ```ruby
-    def initialize
+    def initialize(csv_file_path)
       @recipes = []
-      @csv_file_path = "./recipes.csv"
+      @csv_file_path = csv_file_path
       load_csv
     end
   ```

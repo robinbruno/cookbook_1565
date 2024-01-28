@@ -2,9 +2,9 @@ require "csv"
 require_relative "recipe"
 
 class Cookbook
-  def initialize
+  def initialize(csv_file_path)
     @recipes = []
-    @csv_file_path = "./recipes.csv"
+    @csv_file_path = csv_file_path
     load_csv
   end
 
